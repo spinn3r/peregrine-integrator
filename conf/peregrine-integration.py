@@ -3,9 +3,9 @@
 # build simple/quick peregrine web sources like javadoc/jxr, etc.
 
 
-SCRATCH="/tmp/integration/peregrine"
+SCRATCH="/tmp/integration/peregrine/integration"
 
-TEST_LOGS="/var/lib/integration/peregrine"
+TEST_LOGS="/var/lib/integration/peregrine/integration"
 
 TEST_COMMAND="export HOSTNAME=localhost && export ANT_OPTS=-Xmx512M && ant clean jar compile.test jar && time ant integrate"
 
