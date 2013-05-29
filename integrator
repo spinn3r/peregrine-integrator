@@ -77,7 +77,7 @@ class ReportIndex:
 
         file.write( "<head>\n" )
         file.write( "<style>\n" )
-        file.write( "* { font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif; font-size: 12px;}\n" )
+        file.write( "* { font-family: sans-serif; font-size: 12px;}\n" )
         file.write( "td,th { padding-left: 5px; padding-right: 5px; }\n" )
         file.write( "tr:hover { background-color: lightgrey; }\n" )
         file.write( "th { text-align: left; }\n" )
@@ -657,6 +657,13 @@ for arg in sys.argv[1:]:
 if conf:
     print "Reading config file: %s" % conf 
     execfile( conf )
+
+
+print "SCRATCH:       %s" % SCRATCH
+print "TEST_LOGS:     %s" % TEST_LOGS
+print "TEST_COMMAND:  %s" % TEST_COMMAND
+print "POST_COMMAND:  %s" % POST_COMMAND
+print "REPO:          %s" % REPO
 
 makedirWhenNotExists( SCRATCH )
 makedirWhenNotExists( TEST_LOGS )
