@@ -12,4 +12,4 @@ REPO="https://burtonator:redapplekittycat@bitbucket.org/burtonator/peregrine"
 
 OUTPUT = { 'coverage' : 'target/coverage'  }
 
-OLD_AGE=60 * 60
+OLD_AGE=3 * 60 * 60
