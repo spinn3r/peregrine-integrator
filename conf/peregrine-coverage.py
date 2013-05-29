@@ -11,3 +11,5 @@ TEST_COMMAND="export ANT_OPTS=-Xmx512M && time ant coverage"
 REPO="https://burtonator:redapplekittycat@bitbucket.org/burtonator/peregrine"
 
 OUTPUT = { 'coverage' : 'target/coverage'  }
+
+OLD_AGE=60 * 60
