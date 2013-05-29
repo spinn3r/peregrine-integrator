@@ -73,9 +73,11 @@ class ReportIndex:
 
         file.write( "<html>\n" )
 
+        # FIXME: make this CSS now that I've created a peregrine-integrator repo.
+
         file.write( "<head>\n" )
         file.write( "<style>\n" )
-        file.write( "* { font-family: sans-serif; font-size: 12px; }\n" )
+        file.write( "* { font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif; font-size: 12px;}\n" )
         file.write( "td,th { padding-left: 5px; padding-right: 5px; }\n" )
         file.write( "tr:hover { background-color: lightgrey; }\n" )
         file.write( "th { text-align: left; }\n" )
