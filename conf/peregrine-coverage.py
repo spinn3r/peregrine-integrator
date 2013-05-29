@@ -14,3 +14,5 @@ OUTPUT = { 'coverage' : 'target/coverage',
            'test-reports' : 'target/test-reports' }
 
 OLD_AGE=3 * 60 * 60
+
+TIMEOUT=2*60*60

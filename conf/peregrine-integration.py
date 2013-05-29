@@ -16,3 +16,5 @@ POST_COMMAND="export ANT_OPTS=-Xmx512M && ant test-report"
 REPO="https://burtonator:redapplekittycat@bitbucket.org/burtonator/peregrine"
 
 OUTPUT = { 'test-reports' : 'target/test-reports' }
+
+TIMEOUT=2*60*60

@@ -12,3 +12,5 @@ REPO="https://burtonator:redapplekittycat@bitbucket.org/burtonator/peregrine"
 
 OUTPUT = { 'javadoc' : 'target/javadoc',
            'xref'    : 'target/xref' }
+
+TIMEOUT=5*60
