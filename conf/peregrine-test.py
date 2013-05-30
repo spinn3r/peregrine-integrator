@@ -6,7 +6,7 @@ SCRATCH="/tmp/integration/test"
 
 TEST_LOGS="/var/lib/integration/peregrine/test"
 
-TEST_COMMAND="export ANT_OPTS=-Xmx512M && time ant test"
+TEST_COMMAND="export HOSTNAME=localhost && export ANT_OPTS=-Xmx512M && time ant test"
 
 REPO="https://burtonator:redapplekittycat@bitbucket.org/burtonator/peregrine"
 

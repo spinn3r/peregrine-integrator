@@ -6,7 +6,7 @@ SCRATCH="/tmp/integration/dox"
 
 TEST_LOGS="/var/lib/integration/peregrine/dox"
 
-TEST_COMMAND="export ANT_OPTS=-Xmx512M && time ant javadoc jxr"
+TEST_COMMAND="export HOSTNAME=localhost && export ANT_OPTS=-Xmx512M && time ant javadoc jxr"
 
 REPO="https://burtonator:redapplekittycat@bitbucket.org/burtonator/peregrine"
 

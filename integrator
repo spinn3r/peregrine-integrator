@@ -63,7 +63,7 @@ OLD_AGE=3 * 7 * 24 * 60 * 60
 
 class ReportIndex:
 
-    def __init__(self):
+    def __init__(self,testing_rev):
 
         path="%s/index.html" % TEST_LOGS
 
@@ -88,6 +88,9 @@ class ReportIndex:
         file.write( "<title>Integration report</title>\n" )
         file.write( "</head>\n" )
         file.write( "<body>\n" )
+
+        if ( testing_rev != None ):
+            file.write( "<b>Status: </b> Testing rev: %s\n" % testing_rev )
 
         file.write( "<table width='100%' cellspacing='0'>\n" )
 
@@ -123,13 +126,13 @@ class ReportIndex:
 
         file.write( "<tr>\n" )
         file.write( "<td bgcolor='%s'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>\n" % bgcolor )
-        file.write( "<td nowrap><a href='%s/test.log' target='right'>%s</a></td>\n" % (rev,rev) )
+        file.write( "<td nowrap><a href='%s/test.log'>%s</a></td>\n" % (rev,rev) )
         file.write( "<td nowrap>%s</td>\n" % log['branch'] )
         file.write( "<td nowrap>%s</td>\n" % log['author'] )
         file.write( "<td class='duration' nowrap>%s</td>\n" % duration )
         file.write( "<td nowrap>%s</td>\n" % strftime(time) )
 
-        file.write( "<td align='right'><a href='https://bitbucket.org/burtonator/peregrine/changeset/%s' target='right'>CS</a></td>\n" % rev )
+        file.write( "<td align='right'><a href='https://bitbucket.org/burtonator/peregrine/changeset/%s'>CS</a></td>\n" % rev )
 
         for output_name, output_dir in OUTPUT.items():
 
@@ -588,7 +591,7 @@ def readpath( path ):
 def write_index(current=None):
     """Write the full index of the index"""
 
-    index   = ReportIndex()
+    index   = ReportIndex(current)
 
     try:
 
