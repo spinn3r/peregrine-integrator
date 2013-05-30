@@ -89,8 +89,10 @@ class ReportIndex:
         file.write( "</head>\n" )
         file.write( "<body>\n" )
 
+        file.write( "<b>Command: </b> %s<br/>\n" % TEST_COMMAND )
+
         if ( testing_rev != None ):
-            file.write( "<b>Status: </b> Testing rev: %s\n" % testing_rev )
+            file.write( "<b>Status: </b> Testing rev: %s<br/>\n" % testing_rev )
 
         file.write( "<table width='100%' cellspacing='0'>\n" )
 
