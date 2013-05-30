@@ -45,7 +45,7 @@ POST_COMMAND="export ANT_OPTS=-Xmx512M && ant test-report"
 
 REPO="https://burtonator:redapplekittycat@bitbucket.org/burtonator/peregrine"
 
-DAEMON_SLEEP_INTERVAL=240
+DAEMON_SLEEP_INTERVAL=60
 
 IGNORE_BRANCHES={}
 
@@ -384,6 +384,7 @@ def test(branch,rev):
     if not os.path.exists( changedir ):
         os.makedirs( changedir )
 
+    #TODO: should I combine these? I think I should... 
     _stdout=open( "%s/test.log" % (changedir), "w" )
     _stderr=open( "%s/test.err" % (changedir), "w" )
 
