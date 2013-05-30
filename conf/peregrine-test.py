@@ -8,6 +8,8 @@ TEST_LOGS="/var/lib/integration/peregrine/test"
 
 TEST_COMMAND="export HOSTNAME=localhost && export ANT_OPTS=-Xmx512M && time ant test"
 
+POST_COMMAND="export ANT_OPTS=-Xmx512M && ant test-report"
+
 REPO="https://burtonator:redapplekittycat@bitbucket.org/burtonator/peregrine"
 
 OUTPUT = { 'test-reports' : 'target/test-reports'  }

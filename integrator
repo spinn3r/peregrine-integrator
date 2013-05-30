@@ -89,7 +89,8 @@ class ReportIndex:
         file.write( "</head>\n" )
         file.write( "<body>\n" )
 
-        file.write( "<b>Command: </b> %s<br/>\n" % TEST_COMMAND )
+        file.write( "<b>Test command: </b> %s<br/>\n" % TEST_COMMAND )
+        file.write( "<b>Post command: </b> %s<br/>\n" % POST_COMMAND )
 
         if ( testing_rev != None ):
             file.write( "<b>Status: </b> Testing rev: %s<br/>\n" % testing_rev )
