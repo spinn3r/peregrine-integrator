@@ -1,0 +1,50 @@
+#!/bin/sh
+
+#!/bin/sh
+
+start() {
+
+    
+    echo "started"
+    cd /root/peregrine-integrator
+    
+    ./integrator --daemon conf/peregrine-coverage.py
+    ./integrator --daemon conf/peregrine-dox.py
+    ./integrator --daemon conf/peregrine-test.py
+    ./integrator --daemon conf/peregrine-integration.py
+
+}
+
+stop() {
+
+    pkill -f 'integrator --daemon'
+
+    echo "stopped"
+
+}
+
+args=$@
+shift $(expr $# - 1)
+command=$1
+
+case $command in
+
+    start)
+        start
+        ;;
+
+    stop)
+        stop
+        ;;
+
+    restart)
+        stop
+        start
+        ;;
+
+    *)
+        echo "ERROR: unknown command: $command" 
+        exit 1
+        ;;
+
+esac
