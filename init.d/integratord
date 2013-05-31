@@ -8,10 +8,10 @@ start() {
     echo "started"
     cd /root/peregrine-integrator
     
-    ./integrator --daemon conf/peregrine-coverage.py
-    ./integrator --daemon conf/peregrine-dox.py
-    ./integrator --daemon conf/peregrine-test.py
-    ./integrator --daemon conf/peregrine-integration.py
+    ./integrator --daemon conf/peregrine-coverage.py > /var/log/peregrine-coverage.log &
+    ./integrator --daemon conf/peregrine-dox.py > /var/log/peregrine-dox.log &
+    ./integrator --daemon conf/peregrine-test.py > /var/log/peregrine-test.log &
+    ./integrator --daemon conf/peregrine-integration.py > /var/log/peregrine-integration.log &
 
 }
 
