@@ -13,6 +13,9 @@ start() {
     ./bin/integrator --daemon conf/peregrine-test.py > /var/log/peregrine-test.log &
     ./bin/integrator --daemon conf/peregrine-integration.py > /var/log/peregrine-integration.log &
 
+    ./bin/integrator --daemon conf/peregrine-test-1:1:1:1.py > /var/log/peregrine-test-1:1:1:1.log &
+
+
 }
 
 stop() {
