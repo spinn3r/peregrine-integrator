@@ -96,7 +96,7 @@ class ReportIndex:
         file.write( "<td nowrap>%s</td>\n" % log['branch'] )
         file.write( "<td nowrap>%s</td>\n" % log['author'] )
         file.write( "<td class='duration' nowrap>%s</td>\n" % duration )
-        file.write( "<td nowrap>%s</td>\n" % strftime(time) )
+        file.write( "<td nowrap>%s</td>\n" % libintegrator.strftime(time) )
 
         file.write( "<td align='right'><a href='https://bitbucket.org/burtonator/peregrine/changeset/%s'>CS</a></td>\n" % rev )
 
@@ -122,7 +122,7 @@ class ReportIndex:
         now = datetime.datetime.now()
 
         file.write( "</table>\n" )
-        file.write( "<br/><center><small>%s</small></center>\n" % (strftime(now)) )
+        file.write( "<br/><center><small>%s</small></center>\n" % (libintegrator.strftime(now)) )
         file.write( "</body>\n" )
         file.write( "</html>\n" )
 
