@@ -138,7 +138,7 @@ def write_index():
 
     try:
 
-        changelog = get_change_index_flat()
+        changelog = libintegrator.get_change_index_flat()
 
         for change in changelog:
             
