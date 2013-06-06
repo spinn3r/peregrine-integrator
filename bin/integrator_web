@@ -63,7 +63,6 @@ class ReportIndex:
         file.write( "<table width='100%' cellspacing='0'>\n" )
 
         file.write( "<tr>\n" )
-        file.write( "<th></th>\n" );
 
         for config in configs:
             file.write( "<th>%s</th>\n" % config.name );
