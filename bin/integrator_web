@@ -88,7 +88,7 @@ class ReportIndex:
         else:
             duration=""
 
-        file=open( "%s/index.html" % basedir , "a" );
+        file=open( "%s/index.html" % self.basedir , "a" );
 
         file.write( "<tr>\n" )
         file.write( "<td bgcolor='%s'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>\n" % bgcolor )
@@ -117,7 +117,7 @@ class ReportIndex:
 
     def close(self):
 
-        file=open( "%s/index.html" % basedir , "a" );
+        file=open( "%s/index.html" % self.basedir , "a" );
 
         now = datetime.datetime.now()
 
