@@ -23,10 +23,12 @@ BASEDIR="/var/lib/integration/peregrine/foo"
 class ReportIndex:
 
     basedir=None
+    configs=None
 
-    def __init__(self,basedir):
+    def __init__(self,basedir,configs):
 
         self.basedir=basedir
+        self.configs=configs
 
         path="%s/index.html" % basedir
 
@@ -62,6 +64,10 @@ class ReportIndex:
 
         file.write( "<tr>\n" )
         file.write( "<th></th>\n" );
+
+        for config in configs:
+            file.write( "<th>%s</th>\n", config.name );
+        
         file.write( "<th>rev</th>\n" );
         file.write( "<th>branch</th>\n" );
         file.write( "<th>author</th>\n" );
@@ -131,10 +137,10 @@ class ReportIndex:
         file.close()
 
 
-def write_index():
+def write_index(configs):
     """Write the full index of the index"""
 
-    index   = ReportIndex(BASEDIR)
+    index   = ReportIndex(BASEDIR, configs)
 
     try:
 
@@ -175,7 +181,7 @@ for conf in os.listdir( "./conf/" ):
 
 print "Working with configs: %s" % configs
 
-write_index()    
+write_index(configs)    
 
 #FIXME: we are just left with the LAST scratch dir... prioritize it to use the most up to date one.
     
