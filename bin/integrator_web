@@ -66,7 +66,7 @@ class ReportIndex:
         file.write( "<th></th>\n" );
 
         for config in configs:
-            file.write( "<th>%s</th>\n", config.name );
+            file.write( "<th>%s</th>\n" % config.name );
         
         file.write( "<th>rev</th>\n" );
         file.write( "<th>branch</th>\n" );
