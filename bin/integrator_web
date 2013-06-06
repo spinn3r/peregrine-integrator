@@ -98,6 +98,11 @@ class ReportIndex:
 
         file.write( "<tr>\n" )
         file.write( "<td bgcolor='%s'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>\n" % bgcolor )
+
+        for config in configs:
+            #file.write( "<td>%s</th>\n" % config.name );
+            file.write( "<td bgcolor='%s'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>\n" % bgcolor )
+
         file.write( "<td nowrap><a href='%s/test.log'>%s</a></td>\n" % (rev,rev) )
         file.write( "<td nowrap>%s</td>\n" % log['branch'] )
         file.write( "<td nowrap>%s</td>\n" % log['author'] )
