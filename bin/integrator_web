@@ -101,9 +101,9 @@ class ReportIndex:
 
         for config in configs:
 
-            celltext=status[config.name]
+            bgcolor=status[config.name]
             
-            file.write( "<td bgcolor='%s'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%s</td>\n" % (bgcolor,celltext) )
+            file.write( "<td bgcolor='%s'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>\n" % (bgcolor) )
 
         file.write( "<td nowrap><a href='%s/test.log'>%s</a></td>\n" % (rev,rev) )
         file.write( "<td nowrap>%s</td>\n" % log['branch'] )
@@ -143,6 +143,16 @@ class ReportIndex:
 
         file.close()
 
+def get_color_for_status( status ):
+
+    if status == -1:
+        return "gray"
+
+    if status == 0:
+        return "green"
+
+    return "red"
+
 def get_status_for_configs(configs,rev):
     """For each config, read the status off disk for the given rev."""
 
@@ -150,7 +160,7 @@ def get_status_for_configs(configs,rev):
 
     for config in configs:
 
-        result[ config.name ] = libintegrator.get_rev_status( config.test_logs, rev )
+        result[ config.name ] = get_color_for_status( libintegrator.get_rev_status( config.test_logs, rev ) )
 
     return result
     
