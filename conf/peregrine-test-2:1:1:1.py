@@ -12,7 +12,7 @@ REPO="https://burtonator:redapplekittycat@bitbucket.org/burtonator/peregrine"
 
 OUTPUT = { 'test-reports' : 'target/test-reports'  }
 
-OLD_AGE=3 * 60 * 60
+OLD_AGE=24 * 60 * 60
 
 TIMEOUT=30*60
 
