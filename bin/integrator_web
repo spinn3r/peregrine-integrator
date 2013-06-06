@@ -1,0 +1,45 @@
+#!/usr/bin/python
+
+###
+#
+# Write the main web interface for the integrator.
+
+import datetime
+import os
+import re
+import shutil
+import subprocess
+import sys
+import time
+import traceback
+import libintegrator
+
+NAME=None
+TEST_LOGS=None
+SCRATCH=None
+
+class Conf:
+
+    name=None
+    test_logs=None
+    scratch=None
+    
+    def __init__(self,name,test_logs,scratch):
+        self.name = name
+        self.test_logs = test_logs
+        self.scratch = scratch
+
+
+for conf in os.listdir( "./conf/" ):
+    execfile( "conf/%s" % conf )
+
+    if NAME:
+        print "Using config: %s" % NAME
+        Conf( NAME, TEST_LOGS, SCRATCH )
+
+    NAME=None
+    TEST_LOGS=None
+
+#FIXME: we are just left with the LAST scratch dir... prioritize it to use the most up to date one.
+    
+# now just get the list of changset IDs from HG.
