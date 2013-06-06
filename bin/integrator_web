@@ -77,7 +77,7 @@ class ReportIndex:
     def link( self, bgcolor, rev, log ):
         """Write a link to the given URL."""
 
-        changedir=get_changedir(rev)
+        changedir=get_changedir(self.basedir, rev)
 
         time = datetime.datetime.fromtimestamp( float( log['date'] ) )
 

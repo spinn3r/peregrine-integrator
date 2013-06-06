@@ -30,6 +30,13 @@ def strftime( ts ):
 
     return ts.strftime("%Y-%m-%d %H:%M")
 
+def get_changedir(dir,rev):
+    """Get the directory used to contain logs."""
+
+    changedir="%s/%s/" % (dir, rev)
+
+    return changedir
+
 def read_cmd(cmd, input=None, cwd=None):
     """Run the given command and read its output"""
 
