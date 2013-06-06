@@ -80,7 +80,7 @@ class ReportIndex:
         file.flush()
         file.close()
 
-    def link( self, bgcolor, rev, log ):
+    def link( self, bgcolor, rev, log, status ):
         """Write a link to the given URL."""
 
         changedir=libintegrator.get_changedir(self.basedir, rev)
@@ -141,6 +141,17 @@ class ReportIndex:
 
         file.close()
 
+def get_status_for_configs(configs,rev):
+    """For each config, read the status off disk for the given rev."""
+
+    result={}
+
+    for config in configs:
+
+        result[ config.name ] = libintegrator.get_rev_status( config.test_logs, rev )
+
+    return result
+    
 
 def write_index(configs):
     """Write the full index of the index"""
@@ -154,8 +165,9 @@ def write_index(configs):
         for change in changelog:
             
             rev = change['rev']
-                
-            index.link( "pink", rev, change )
+
+            status = get_status_for_configs( configs, rev)
+            index.link( "pink", rev, change, status )
 
     finally:
         
