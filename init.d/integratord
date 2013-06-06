@@ -7,14 +7,20 @@ start() {
     
     echo "started"
     cd /root/peregrine-integrator
+
+    # TODO: loop through ALL the conf files and start an integrator for them.
+
+    for file in `ls -1 conf/*.py`; do
+        name=$(basename $file | grep -Eo '^[^.]+')
+        echo ./bin/integrator --daemon $file > /var/log/$name.log &
+    done
     
-    ./bin/integrator --daemon conf/peregrine-coverage.py > /var/log/peregrine-coverage.log &
-    ./bin/integrator --daemon conf/peregrine-dox.py > /var/log/peregrine-dox.log &
-    ./bin/integrator --daemon conf/peregrine-test.py > /var/log/peregrine-test.log &
-    ./bin/integrator --daemon conf/peregrine-integration.py > /var/log/peregrine-integration.log &
+    # ./bin/integrator --daemon conf/peregrine-coverage.py > /var/log/peregrine-coverage.log &
+    # ./bin/integrator --daemon conf/peregrine-dox.py > /var/log/peregrine-dox.log &
+    # ./bin/integrator --daemon conf/peregrine-test.py > /var/log/peregrine-test.log &
+    # ./bin/integrator --daemon conf/peregrine-integration.py > /var/log/peregrine-integration.log &
 
-    ./bin/integrator --daemon conf/peregrine-test-1:1:1:1.py > /var/log/peregrine-test-1:1:1:1.log &
-
+    # ./bin/integrator --daemon conf/peregrine-test-1:1:1:1.py > /var/log/peregrine-test-1:1:1:1.log &
 
 }
 
