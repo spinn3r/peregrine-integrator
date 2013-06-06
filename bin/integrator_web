@@ -80,7 +80,7 @@ class ReportIndex:
         file.flush()
         file.close()
 
-    def link( self, bgcolor, rev, log, status ):
+    def link( self, rev, log, status ):
         """Write a link to the given URL."""
 
         changedir=libintegrator.get_changedir(self.basedir, rev)
@@ -97,7 +97,6 @@ class ReportIndex:
         file=open( "%s/index.html" % self.basedir , "a" );
 
         file.write( "<tr>\n" )
-        file.write( "<td bgcolor='%s'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>\n" % bgcolor )
 
         for config in configs:
 
@@ -163,7 +162,6 @@ def get_status_for_configs(configs,rev):
         result[ config.name ] = get_color_for_status( libintegrator.get_rev_status( config.test_logs, rev ) )
 
     return result
-    
 
 def write_index(configs):
     """Write the full index of the index"""
@@ -179,7 +177,7 @@ def write_index(configs):
             rev = change['rev']
 
             status = get_status_for_configs( configs, rev)
-            index.link( "pink", rev, change, status )
+            index.link( rev, change, status )
 
     finally:
         
@@ -190,7 +188,7 @@ class Conf:
     name=None
     test_logs=None
     scratch=None
-    
+
     def __init__(self,name,test_logs,scratch):
         self.name = name
         self.test_logs = test_logs
@@ -198,10 +196,11 @@ class Conf:
 
 configs=[]
 
-for conf in os.listdir( "./conf/" ):
+for conf in sorted( os.listdir( "./conf/" ) ):
+
     execfile( "conf/%s" % conf )
 
-    if NAME:
+    if NAME != None:
         print "Using config: %s" % NAME
         configs.append( Conf( NAME, TEST_LOGS, SCRATCH ) )
 
