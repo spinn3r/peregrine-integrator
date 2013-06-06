@@ -161,15 +161,19 @@ class Conf:
         self.test_logs = test_logs
         self.scratch = scratch
 
+configs=[]
+
 for conf in os.listdir( "./conf/" ):
     execfile( "conf/%s" % conf )
 
     if NAME:
         print "Using config: %s" % NAME
-        Conf( NAME, TEST_LOGS, SCRATCH )
+        configs.append( Conf( NAME, TEST_LOGS, SCRATCH ) )
 
     NAME=None
     TEST_LOGS=None
+
+print "Working with configs: %s" % configs
 
 write_index()    
 
