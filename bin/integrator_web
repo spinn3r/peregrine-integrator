@@ -18,6 +18,138 @@ NAME=None
 TEST_LOGS=None
 SCRATCH=None
 
+BASEDIR="/var/lib/integration/peregrine/foo"
+
+class ReportIndex:
+
+    basedir=None
+
+    def __init__(self,basedir):
+
+        self.basedir=basedir
+
+        path="%s/index.html" % basedir
+
+        print "Going to write index: %s" % path
+
+        file=open( path , "w" );
+
+        file.write( "<html>\n" )
+
+        # FIXME: make this CSS now that I've created a peregrine-integrator repo.
+
+        file.write( "<head>\n" )
+        file.write( "<style>\n" )
+        file.write( "* { font-family: sans-serif; font-size: 12px;}\n" )
+        file.write( "td,th { padding-left: 5px; padding-right: 5px; }\n" )
+        file.write( "tr:hover { background-color: lightgrey; }\n" )
+        file.write( "th { text-align: left; }\n" )
+        file.write( ".duration { text-align: right; }\n" )
+        file.write( "</style>\n" )
+
+        file.write( "<meta http-equiv='cache-control' content='no-cache'>\n" )
+        file.write( "<title>Integration report</title>\n" )
+        file.write( "</head>\n" )
+        file.write( "<body>\n" )
+
+        # file.write( "<b>Test command: </b> %s<br/>\n" % TEST_COMMAND )
+        # file.write( "<b>Post command: </b> %s<br/>\n" % POST_COMMAND )
+
+        # if ( testing_rev != None ):
+        #     file.write( "<b>Status: </b> Testing rev: %s<br/>\n" % testing_rev )
+
+        file.write( "<table width='100%' cellspacing='0'>\n" )
+
+        file.write( "<tr>\n" )
+        file.write( "<th></th>\n" );
+        file.write( "<th>rev</th>\n" );
+        file.write( "<th>branch</th>\n" );
+        file.write( "<th>author</th>\n" );
+        file.write( "<th>duration</th>\n" );
+        file.write( "<th>commit time</th>\n" );
+        file.write( "<th>diff</th>\n" );
+        file.write( "<th>output</th>\n" );
+        file.write( "</tr>\n" )
+
+        file.flush()
+        file.close()
+
+    def link( self, bgcolor, rev, log ):
+        """Write a link to the given URL."""
+
+        changedir=get_changedir(rev)
+
+        time = datetime.datetime.fromtimestamp( float( log['date'] ) )
+
+        duration=readpath("%s/duration" % (changedir))
+
+        if ( duration ):
+            duration = int(float(duration))
+        else:
+            duration=""
+
+        file=open( "%s/index.html" % basedir , "a" );
+
+        file.write( "<tr>\n" )
+        file.write( "<td bgcolor='%s'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>\n" % bgcolor )
+        file.write( "<td nowrap><a href='%s/test.log'>%s</a></td>\n" % (rev,rev) )
+        file.write( "<td nowrap>%s</td>\n" % log['branch'] )
+        file.write( "<td nowrap>%s</td>\n" % log['author'] )
+        file.write( "<td class='duration' nowrap>%s</td>\n" % duration )
+        file.write( "<td nowrap>%s</td>\n" % strftime(time) )
+
+        file.write( "<td align='right'><a href='https://bitbucket.org/burtonator/peregrine/changeset/%s'>CS</a></td>\n" % rev )
+
+        for output_name, output_dir in OUTPUT.items():
+
+            output_full_path="%s/%s" % (changedir, output_name)
+
+            if ( os.path.exists( output_full_path ) ):
+                file.write( "<td nowrap><a href='%s/%s'>%s</a></td>\n" % (rev,output_name,output_name) )
+            else:
+                print "Output path does not exist: %s" % output_full_path
+                file.write( "<td></td>\n" )
+
+        file.write( "<td nowrap>%s</td>\n" % log['desc'] )
+
+        file.write( "</tr>\n" )
+        file.close()
+
+    def close(self):
+
+        file=open( "%s/index.html" % basedir , "a" );
+
+        now = datetime.datetime.now()
+
+        file.write( "</table>\n" )
+        file.write( "<br/><center><small>%s</small></center>\n" % (strftime(now)) )
+        file.write( "</body>\n" )
+        file.write( "</html>\n" )
+
+        file.flush()
+
+        file.close()
+
+
+def write_index(current=None):
+    """Write the full index of the index"""
+
+    index   = ReportIndex(current)
+
+    try:
+
+        changelog = get_change_index_flat()
+
+        for change in changelog:
+            
+            rev = change['rev']
+                
+            index.link( "pink", rev, change )
+
+    finally:
+        
+        index.close()
+
 class Conf:
 
     name=None
@@ -28,7 +160,6 @@ class Conf:
         self.name = name
         self.test_logs = test_logs
         self.scratch = scratch
-
 
 for conf in os.listdir( "./conf/" ):
     execfile( "conf/%s" % conf )
