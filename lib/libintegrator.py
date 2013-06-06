@@ -57,6 +57,11 @@ def read_cmd(cmd, input=None, cwd=None):
         elif result >= 0:
             raise Exception( "%s exited with %s" % (cmd, result) )
 
+def parse_hg_log_desc(line):
+
+    return line[line.find( "DESC:" ) + len("DESC:"):]
+
+
 def get_change_index_flat(scratch):
     """Get the full HG log output."""
 
