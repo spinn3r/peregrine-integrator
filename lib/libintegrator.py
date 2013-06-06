@@ -57,10 +57,10 @@ def read_cmd(cmd, input=None, cwd=None):
         elif result >= 0:
             raise Exception( "%s exited with %s" % (cmd, result) )
 
-def get_change_index_flat():
+def get_change_index_flat(scratch):
     """Get the full HG log output."""
 
-    return parse_hg_log_flat(get_hg_log())
+    return parse_hg_log_flat(get_hg_log(scratch))
 
 def get_hg_log(scratch):
     """Get the output of 'hg log'""" 
