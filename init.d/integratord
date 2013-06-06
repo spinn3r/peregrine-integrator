@@ -12,7 +12,7 @@ start() {
 
     for file in `ls -1 conf/*.py`; do
         name=$(basename $file | grep -Eo '^[^.]+')
-        echo ./bin/integrator --daemon $file > /var/log/$name.log &
+        ./bin/integrator --daemon $file > /var/log/$name.log &
     done
     
     # ./bin/integrator --daemon conf/peregrine-coverage.py > /var/log/peregrine-coverage.log &
