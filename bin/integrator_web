@@ -131,10 +131,10 @@ class ReportIndex:
         file.close()
 
 
-def write_index(current=None):
+def write_index():
     """Write the full index of the index"""
 
-    index   = ReportIndex(current)
+    index   = ReportIndex(BASEDIR)
 
     try:
 
@@ -170,6 +170,8 @@ for conf in os.listdir( "./conf/" ):
 
     NAME=None
     TEST_LOGS=None
+
+write_index()    
 
 #FIXME: we are just left with the LAST scratch dir... prioritize it to use the most up to date one.
     
