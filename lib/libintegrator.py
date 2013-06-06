@@ -30,6 +30,19 @@ def strftime( ts ):
 
     return ts.strftime("%Y-%m-%d %H:%M")
 
+def readpath( path ):
+    """Read data from the file at the given path."""
+
+    result=None
+
+    if ( os.path.exists( path ) ):
+
+        file=open( path, "r" )
+        result=file.read()
+        file.close()
+
+    return result
+
 def get_changedir(dir,rev):
     """Get the directory used to contain logs."""
 

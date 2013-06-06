@@ -81,7 +81,7 @@ class ReportIndex:
 
         time = datetime.datetime.fromtimestamp( float( log['date'] ) )
 
-        duration=readpath("%s/duration" % (changedir))
+        duration=libintegrator.readpath("%s/duration" % (changedir))
 
         if ( duration ):
             duration = int(float(duration))
