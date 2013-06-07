@@ -76,7 +76,7 @@ class ReportIndex:
         file.close()
 
     def link( self, rev, log, status ):
-        """Write a link to the given URL."""
+        """Write a link to the given URL.  Return metadata about the link."""
 
         time = datetime.datetime.fromtimestamp( float( log['date'] ) )
 
@@ -150,7 +150,7 @@ class ReportIndex:
 def get_color_for_status( status ):
 
     if status == -1:
-        return "pink"
+        return "blue"
 
     if status == 0:
         return "green"
