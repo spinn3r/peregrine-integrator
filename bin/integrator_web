@@ -38,8 +38,7 @@ class ReportIndex:
         file.write( "<style>\n" )
         file.write( "* { font-family: sans-serif; font-size: 12px;}\n" )
         file.write( "td,th { padding-left: 5px; padding-right: 5px; }\n" )
-        file.write( "th:hover { background-color: white; }\n" )
-        file.write( "tr:hover { background-color: lightgrey; }\n" )
+        file.write( ".data-row:hover { background-color: lightgrey; }\n" )
         file.write( "th { text-align: left; }\n" )
         file.write( ".rev-anchor A { padding-left: 0px; padding-right: 0px;}\n" )
         file.write( ".rev-anchor A { display: block; width: 3em; height: 1em;}\n" )
@@ -83,7 +82,7 @@ class ReportIndex:
 
         file=open( "%s/index.html" % self.basedir , "a" );
 
-        file.write( "<tr>\n" )
+        file.write( "<tr class='data-row'>\n" )
 
         max_duration = 0
 
