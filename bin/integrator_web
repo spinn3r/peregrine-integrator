@@ -67,6 +67,7 @@ class ReportIndex:
         file.write( "<th>branch</th>\n" );
         file.write( "<th>author</th>\n" );
         file.write( "<th>commit time</th>\n" );
+        file.write( "<th>max_duration</th>\n" );
         file.write( "<th>diff</th>\n" );
         file.write( "<th>output</th>\n" );
         file.write( "</tr>\n" )
@@ -83,6 +84,8 @@ class ReportIndex:
 
         file.write( "<tr>\n" )
 
+        max_duration = 0
+
         for config in configs:
 
             changedir=libintegrator.get_changedir(config.test_logs, rev)
@@ -91,6 +94,10 @@ class ReportIndex:
 
             if ( duration ):
                 duration = int(float(duration))
+
+                if duration > max_duration:
+                    max_duration = duration
+                
             else:
                 duration=""
 
@@ -102,6 +109,7 @@ class ReportIndex:
         file.write( "<td nowrap>%s</td>\n" % log['branch'] )
         file.write( "<td nowrap>%s</td>\n" % log['author'] )
         file.write( "<td nowrap>%s</td>\n" % libintegrator.strftime(time) )
+        file.write( "<td nowrap>%s</td>\n" % max_duration )
 
         file.write( "<td align='right'><a href='https://bitbucket.org/burtonator/peregrine/changeset/%s'>CS</a></td>\n" % rev )
 
