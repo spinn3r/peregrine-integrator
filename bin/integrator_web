@@ -167,12 +167,17 @@ def write_index(configs):
 
         changelog = libintegrator.get_change_index_flat(SCRATCH)
 
+        index = 0
         for change in changelog:
+
+            if index > 200:
+                break
             
             rev = change['rev']
 
             status = get_status_for_configs( configs, rev)
             index.link( rev, change, status )
+            ++index
 
     finally:
         
