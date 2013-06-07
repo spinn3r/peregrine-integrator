@@ -149,11 +149,14 @@ class ReportIndex:
 
 def get_color_for_status( status ):
 
-    if status == -1:
+    if status == -2:
         return "blue"
 
     if status == 0:
         return "green"
+
+    if status == -1:
+        return "red"
 
     if status >= 1:
         return "red"

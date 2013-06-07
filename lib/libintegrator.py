@@ -128,7 +128,13 @@ def parse_hg_log_flat(output):
     return index
 
 def get_rev_status(basedir,rev):
-    """Return None if the rev is not tested, -1 if it is testing. 0 if it passed, and > 0 if it failed (the exit code)."""
+    """Return
+
+    None if the rev is not tested
+    -2 if it is testing
+    -1 if it timed out during testing
+     0 if it passed
+    >0 if it failed (the exit code)."""
 
     path = "%s/%s" % (basedir, rev)
     
@@ -137,8 +143,6 @@ def get_rev_status(basedir,rev):
         exit_file="%s/exit.result" % (path)
 
         if ( os.path.exists( exit_file ) ):
-
-            print "FIXME: exit result exists." 
 
             exit_result=open( exit_file, "r" )
             result=exit_result.read()
@@ -153,7 +157,7 @@ def get_rev_status(basedir,rev):
 
             st=os.stat(test_log)    
             if st.st_mtime > time.time() - (2 * 60):
-                return -1
+                return -2
                 
     return None
     
