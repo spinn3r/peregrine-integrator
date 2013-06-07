@@ -66,7 +66,6 @@ class ReportIndex:
         file.write( "<th>rev</th>\n" );
         file.write( "<th>branch</th>\n" );
         file.write( "<th>author</th>\n" );
-        file.write( "<th>duration</th>\n" );
         file.write( "<th>commit time</th>\n" );
         file.write( "<th>diff</th>\n" );
         file.write( "<th>output</th>\n" );
@@ -78,22 +77,22 @@ class ReportIndex:
     def link( self, rev, log, status ):
         """Write a link to the given URL."""
 
-        changedir=libintegrator.get_changedir(self.basedir, rev)
-
         time = datetime.datetime.fromtimestamp( float( log['date'] ) )
-
-        duration=libintegrator.readpath("%s/duration" % (changedir))
-
-        if ( duration ):
-            duration = int(float(duration))
-        else:
-            duration=""
 
         file=open( "%s/index.html" % self.basedir , "a" );
 
         file.write( "<tr>\n" )
 
         for config in configs:
+
+            changedir=libintegrator.get_changedir(self.basedir, rev)
+
+            duration=libintegrator.readpath("%s/duration" % (changedir))
+
+            if ( duration ):
+                duration = int(float(duration))
+            else:
+                duration=""
 
             bgcolor=status[config.name]
             
@@ -102,7 +101,6 @@ class ReportIndex:
         file.write( "<td nowrap><a href='%s/test.log'>%s</a></td>\n" % (rev,rev) )
         file.write( "<td nowrap>%s</td>\n" % log['branch'] )
         file.write( "<td nowrap>%s</td>\n" % log['author'] )
-        file.write( "<td class='duration' nowrap>%s</td>\n" % duration )
         file.write( "<td nowrap>%s</td>\n" % libintegrator.strftime(time) )
 
         file.write( "<td align='right'><a href='https://bitbucket.org/burtonator/peregrine/changeset/%s'>CS</a></td>\n" % rev )
