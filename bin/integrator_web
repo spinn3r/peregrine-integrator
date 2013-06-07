@@ -147,12 +147,15 @@ class ReportIndex:
 def get_color_for_status( status ):
 
     if status == -1:
-        return "gray"
+        return "pink"
 
     if status == 0:
         return "green"
 
-    return "red"
+    if status >= 1:
+        return "red"
+
+    return "gray"
 
 def get_status_for_configs(configs,rev):
     """For each config, read the status off disk for the given rev."""

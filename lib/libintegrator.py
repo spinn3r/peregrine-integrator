@@ -128,7 +128,7 @@ def parse_hg_log_flat(output):
     return index
 
 def get_rev_status(basedir,rev):
-    """Return -1 if the rev isn not tested, 0 if it passed, and > 0 if it failed (the exit code)."""
+    """Return None if the rev is not tested, -1 if it is testing. 0 if it passed, and > 0 if it failed (the exit code)."""
 
     path = "%s/%s" % (basedir, rev)
     
@@ -142,6 +142,9 @@ def get_rev_status(basedir,rev):
             result=exit_result.read()
             exit_result.close()
             return int(result)
+
+    if os.path.exists( "%s/test.log" % path ):
+        return -1
             
-    return -1
+    return None
     
