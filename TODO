@@ -1,8 +1,18 @@
 
-- updtae the init.d with the web interface update
+- A % of completed slots would be nice so that when a job is tryign to catch up
+  on a LOT of work due to a large-retest then I can see the percentage...  I'm
+  going to need a system to log this every hour.
+
+  - I need the ability to embed CPU metrics.
+
+- A test is only pink if it isn't completed... n
+  
 - change the web root so that index.html is on /
 
 - We're linking to test-logs that do not exist yet.
+
 - restart the daemon again so that coverage and test aren't working.
+
 - put the test-basic in its own test suite though I don't htink it's taking much time.
 
+- how are we going to purge old tests... I think I need to use OLD_AGE to do this.

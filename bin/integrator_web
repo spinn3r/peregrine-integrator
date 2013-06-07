@@ -111,6 +111,10 @@ class ReportIndex:
         file.write( "<td nowrap>%s</td>\n" % log['branch'] )
         file.write( "<td nowrap>%s</td>\n" % log['author'] )
         file.write( "<td nowrap>%s</td>\n" % libintegrator.strftime(time) )
+
+        if max_duration == -1:
+            max_duration = ""
+
         file.write( "<td nowrap>%s</td>\n" % max_duration )
 
         #for output_name, output_dir in OUTPUT.items():
@@ -122,7 +126,6 @@ class ReportIndex:
         #    else:
         #        print "Output path does not exist: %s" % output_full_path
         #        file.write( "<td></td>\n" )
-
 
         file.write( "<td nowrap>%s</td>\n" % log['desc'] )
 
@@ -215,7 +218,7 @@ TEST_LOGS=None
 SCRATCH=None
 WEBDIR=None
 
-BASEDIR="/var/lib/integration/peregrine/foo"
+BASEDIR="/var/lib/integration/peregrine"
 
 daemon=False
 
