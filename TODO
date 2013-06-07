@@ -1,6 +1,8 @@
 
-- make the --daemon work for the web
-- if the job output is being updated then I need to mark that the job is running
 - updtae the init.d with the web interface update
-- change the root
+- change the web root so that index.html is on /
+
+- We're linking to test-logs that do not exist yet.
+- restart the daemon again so that coverage and test aren't working.
+- put the test-basic in its own test suite though I don't htink it's taking much time.
 

@@ -84,7 +84,7 @@ class ReportIndex:
 
         file.write( "<tr class='data-row'>\n" )
 
-        max_duration = 0
+        max_duration = -1
 
         for config in configs:
 

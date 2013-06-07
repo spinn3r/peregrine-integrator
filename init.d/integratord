@@ -14,6 +14,8 @@ start() {
         name=$(basename $file | grep -Eo '^[^.]+')
         ./bin/integrator --daemon $file > /var/log/$name.log &
     done
+
+    ./bin/integrator_web --daemon &
     
     # ./bin/integrator --daemon conf/peregrine-coverage.py > /var/log/peregrine-coverage.log &
     # ./bin/integrator --daemon conf/peregrine-dox.py > /var/log/peregrine-dox.log &
@@ -27,6 +29,7 @@ start() {
 stop() {
 
     pkill -f 'integrator --daemon'
+    pkill -f 'integrator_web --daemon'
 
     echo "stopped"
 
