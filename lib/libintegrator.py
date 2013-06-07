@@ -143,8 +143,12 @@ def get_rev_status(basedir,rev):
             exit_result.close()
             return int(result)
 
-    if os.path.exists( "%s/test.log" % path ):
-        return -1
+    test_log="%s/test.log" % path
+    if os.path.exists( test_log ):
+
+        st=os.stat(test_log)    
+        if st.st_mtime > time.time() - 60:
+            return -1
             
     return None
     
