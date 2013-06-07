@@ -168,6 +168,8 @@ def get_status_for_configs(configs,rev):
 def write_index(configs):
     """Write the full index of the index"""
 
+    print "Using scratch dir: %s" % SCRATCH
+
     index   = ReportIndex(BASEDIR, configs)
 
     try:
@@ -233,7 +235,7 @@ for conf in sorted( os.listdir( "./conf/" ) ):
     TEST_LOGS=None
     WEBDIR=None
 
-print "Working with configs: %s" % configs
+#print "Working with configs: %s" % configs
 
 while True:
     
