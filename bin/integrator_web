@@ -69,7 +69,7 @@ class ReportIndex:
         file.write( "<th>commit time</th>\n" );
         file.write( "<th>max duration</th>\n" );
         file.write( "<th>diff</th>\n" );
-        file.write( "<th>output</th>\n" );
+        #file.write( "<th>output</th>\n" );
         file.write( "</tr>\n" )
 
         file.flush()
@@ -113,15 +113,15 @@ class ReportIndex:
 
         file.write( "<td align='right'><a href='https://bitbucket.org/burtonator/peregrine/changeset/%s'>CS</a></td>\n" % rev )
 
-        for output_name, output_dir in OUTPUT.items():
-
-            output_full_path="%s/%s" % (changedir, output_name)
-
-            if ( os.path.exists( output_full_path ) ):
-                file.write( "<td nowrap><a href='%s/%s'>%s</a></td>\n" % (rev,output_name,output_name) )
-            else:
-                print "Output path does not exist: %s" % output_full_path
-                file.write( "<td></td>\n" )
+        #for output_name, output_dir in OUTPUT.items():
+        #  
+        #    output_full_path="%s/%s" % (changedir, output_name)
+        #
+        #    if ( os.path.exists( output_full_path ) ):
+        #        file.write( "<td nowrap><a href='%s/%s'>%s</a></td>\n" % (rev,output_name,output_name) )
+        #    else:
+        #        print "Output path does not exist: %s" % output_full_path
+        #        file.write( "<td></td>\n" )
 
         file.write( "<td nowrap>%s</td>\n" % log['desc'] )
 

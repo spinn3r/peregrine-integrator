@@ -1,2 +1,6 @@
-- make the timeout status more obvious and not just FAIL.  
-- 
+
+- make the --daemon work for the web
+- if the job output is being updated then I need to mark that the job is running
+- updtae the init.d with the web interface update
+- change the root
+
