@@ -177,7 +177,7 @@ def write_index(configs):
 
             status = get_status_for_configs( configs, rev)
             index.link( rev, change, status )
-            ++idx
+            idx = idx + 1
 
     finally:
         
