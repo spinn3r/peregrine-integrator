@@ -6,6 +6,8 @@ SCRATCH="/tmp/integration/test-1_1_1_2"
 
 TEST_LOGS="/var/lib/integration/peregrine/test-1_1_1_2"
 
+WEBDIR="/test-1_1_1_2"
+
 TEST_COMMAND="export HOSTNAME=localhost && export ANT_OPTS='-Xmx512M -Dperegrine.test.portOffset=250 -Dmulti.factors=1 -Dmulti.configs=1:1:2' && time ant test"
 
 POST_COMMAND="export ANT_OPTS=-Xmx512M && ant test-report"
