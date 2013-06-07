@@ -68,7 +68,7 @@ class ReportIndex:
         file.write( "<th>author</th>\n" );
         file.write( "<th>commit time</th>\n" );
         file.write( "<th>max duration</th>\n" );
-        file.write( "<th>diff</th>\n" );
+        #file.write( "<th>diff</th>\n" );
         #file.write( "<th>output</th>\n" );
         file.write( "</tr>\n" )
 
@@ -105,13 +105,13 @@ class ReportIndex:
             
             file.write( "<td class='rev-anchor' bgcolor='%s'><a href='%s/%s/test-reports/'></a></td>\n" % (bgcolor,config.webdir,rev) )
 
-        file.write( "<td nowrap><a href='%s/test.log'>%s</a></td>\n" % (rev,rev) )
+        #file.write( "<td nowrap><a href='%s/test.log'>%s</a></td>\n" % (rev,rev) )
+        file.write( "<td align='right'><a href='https://bitbucket.org/burtonator/peregrine/changeset/%s'>%s</a></td>\n" % (rev,rev) )
+
         file.write( "<td nowrap>%s</td>\n" % log['branch'] )
         file.write( "<td nowrap>%s</td>\n" % log['author'] )
         file.write( "<td nowrap>%s</td>\n" % libintegrator.strftime(time) )
         file.write( "<td nowrap>%s</td>\n" % max_duration )
-
-        file.write( "<td align='right'><a href='https://bitbucket.org/burtonator/peregrine/changeset/%s'>CS</a></td>\n" % rev )
 
         #for output_name, output_dir in OUTPUT.items():
         #  
