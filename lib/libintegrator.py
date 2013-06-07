@@ -138,6 +138,8 @@ def get_rev_status(basedir,rev):
 
         if ( os.path.exists( exit_file ) ):
 
+            print "FIXME: exit result exists." 
+
             exit_result=open( exit_file, "r" )
             result=exit_result.read()
             exit_result.close()
