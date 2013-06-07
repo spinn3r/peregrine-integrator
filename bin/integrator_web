@@ -46,6 +46,7 @@ class ReportIndex:
         file.write( "td,th { padding-left: 5px; padding-right: 5px; }\n" )
         file.write( "tr:hover { background-color: lightgrey; }\n" )
         file.write( "th { text-align: left; }\n" )
+        file.write( ".rev-anchor { display: block; }\n" )
         file.write( ".duration { text-align: right; }\n" )
         file.write( "</style>\n" )
 
@@ -101,7 +102,7 @@ class ReportIndex:
 
             bgcolor=status[config.name]
             
-            file.write( "<td bgcolor='%s'><a href='%s/test-reports/'></a></td>\n" % (bgcolor,rev) )
+            file.write( "<td bgcolor='%s'><a class='rev-anchor' href='%s/test-reports/'></a></td>\n" % (bgcolor,rev) )
 
         file.write( "<td nowrap><a href='%s/test.log'>%s</a></td>\n" % (rev,rev) )
         file.write( "<td nowrap>%s</td>\n" % log['branch'] )
