@@ -101,7 +101,7 @@ class ReportIndex:
 
             bgcolor=status[config.name]
             
-            file.write( "<td bgcolor='%s'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>\n" % (bgcolor) )
+            file.write( "<td bgcolor='%s'><a href='%s/test-reports/'></a></td>\n" % (bgcolor,rev) )
 
         file.write( "<td nowrap><a href='%s/test.log'>%s</a></td>\n" % (rev,rev) )
         file.write( "<td nowrap>%s</td>\n" % log['branch'] )
