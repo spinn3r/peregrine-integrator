@@ -14,12 +14,6 @@ import time
 import traceback
 import libintegrator
 
-NAME=None
-TEST_LOGS=None
-SCRATCH=None
-
-BASEDIR="/var/lib/integration/peregrine/foo"
-
 class ReportIndex:
 
     basedir=None
@@ -103,7 +97,7 @@ class ReportIndex:
 
             bgcolor=status[config.name]
             
-            file.write( "<td class='rev-anchor' bgcolor='%s'><a href='%s/test-reports/'></a></td>\n" % (bgcolor,rev) )
+            file.write( "<td class='rev-anchor' bgcolor='%s'><a href='%s/%s/test-reports/'></a></td>\n" % (bgcolor,config.webdir,rev) )
 
         file.write( "<td nowrap><a href='%s/test.log'>%s</a></td>\n" % (rev,rev) )
         file.write( "<td nowrap>%s</td>\n" % log['branch'] )
@@ -189,11 +183,20 @@ class Conf:
     name=None
     test_logs=None
     scratch=None
+    webdir=None
 
-    def __init__(self,name,test_logs,scratch):
+    def __init__(self,name,test_logs,scratch,webdir):
         self.name = name
         self.test_logs = test_logs
         self.scratch = scratch
+        self.webdir = webdir
+
+NAME=None
+TEST_LOGS=None
+SCRATCH=None
+WEBDIR=None
+
+BASEDIR="/var/lib/integration/peregrine/foo"
 
 configs=[]
 
@@ -203,10 +206,11 @@ for conf in sorted( os.listdir( "./conf/" ) ):
 
     if NAME != None:
         print "Using config: %s" % NAME
-        configs.append( Conf( NAME, TEST_LOGS, SCRATCH ) )
+        configs.append( Conf( NAME, TEST_LOGS, SCRATCH, WEBDIR ) )
 
     NAME=None
     TEST_LOGS=None
+    WEBDIR=None
 
 print "Working with configs: %s" % configs
 
