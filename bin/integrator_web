@@ -61,7 +61,7 @@ class ReportIndex:
         # if ( testing_rev != None ):
         #     file.write( "<b>Status: </b> Testing rev: %s<br/>\n" % testing_rev )
 
-        file.write( "<table width='100%' cellspacing='0'>\n" )
+        file.write( "<table width='100%'>\n" )
 
         file.write( "<tr>\n" )
 
