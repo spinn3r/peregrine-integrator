@@ -203,12 +203,21 @@ class Conf:
         self.scratch = scratch
         self.webdir = webdir
 
+DAEMON_SLEEP_INTERVAL=60
+
 NAME=None
 TEST_LOGS=None
 SCRATCH=None
 WEBDIR=None
 
 BASEDIR="/var/lib/integration/peregrine/foo"
+
+daemon=False
+
+for arg in sys.argv[1:]:
+        
+    if arg == "--daemon":
+        daemon=True
 
 configs=[]
 
@@ -226,8 +235,13 @@ for conf in sorted( os.listdir( "./conf/" ) ):
 
 print "Working with configs: %s" % configs
 
-write_index(configs)    
-
-#FIXME: we are just left with the LAST scratch dir... prioritize it to use the most up to date one.
+while True:
     
-# now just get the list of changset IDs from HG.
+    write_index(configs)    
+    
+    if not daemon:
+        break
+
+    print "Sleeping for %s" % DAEMON_SLEEP_INTERVAL
+    time.sleep( DAEMON_SLEEP_INTERVAL )
+
