@@ -3,10 +3,9 @@
 #!/bin/sh
 
 start() {
-
     
-    echo "started"
     cd /root/peregrine-integrator
+    export PYTHONPATH=lib
 
     # TODO: loop through ALL the conf files and start an integrator for them.
 
@@ -15,7 +14,7 @@ start() {
         ./bin/integrator --daemon $file > /var/log/$name.log &
     done
 
-    ./bin/integrator_web --daemon &
+    ./bin/integrator_web --daemon > /var/log/peregrine-integrator_web.log &
     
     # ./bin/integrator --daemon conf/peregrine-coverage.py > /var/log/peregrine-coverage.log &
     # ./bin/integrator --daemon conf/peregrine-dox.py > /var/log/peregrine-dox.log &
@@ -23,6 +22,8 @@ start() {
     # ./bin/integrator --daemon conf/peregrine-integration.py > /var/log/peregrine-integration.log &
 
     # ./bin/integrator --daemon conf/peregrine-test-1:1:1:1.py > /var/log/peregrine-test-1:1:1:1.log &
+
+    echo "started"
 
 }
 
