@@ -67,7 +67,7 @@ class ReportIndex:
         file.write( "<th>branch</th>\n" );
         file.write( "<th>author</th>\n" );
         file.write( "<th>commit time</th>\n" );
-        file.write( "<th>max_duration</th>\n" );
+        file.write( "<th>max duration</th>\n" );
         file.write( "<th>diff</th>\n" );
         file.write( "<th>output</th>\n" );
         file.write( "</tr>\n" )
@@ -103,7 +103,7 @@ class ReportIndex:
 
             bgcolor=status[config.name]
             
-            file.write( "<td class='rev-anchor' bgcolor='%s'><a href='%s/%s/test-reports/'>%s</a></td>\n" % (bgcolor,config.webdir,rev,duration) )
+            file.write( "<td class='rev-anchor' bgcolor='%s'><a href='%s/%s/test-reports/'></a></td>\n" % (bgcolor,config.webdir,rev,duration) )
 
         file.write( "<td nowrap><a href='%s/test.log'>%s</a></td>\n" % (rev,rev) )
         file.write( "<td nowrap>%s</td>\n" % log['branch'] )
