@@ -1,0 +1,46 @@
+#!/bin/sh
+
+start() {
+    
+    cd /root/peregrine-integrator
+    export PYTHONPATH=lib
+
+    ./bin/integrator_web --daemon > /var/log/peregrine-integrator_web.log &
+    
+    echo "started"
+
+}
+
+stop() {
+
+    pkill -f 'integrator_web --daemon'
+
+    echo "stopped"
+
+}
+
+args=$@
+shift $(expr $# - 1)
+command=$1
+
+case $command in
+
+    start)
+        start
+        ;;
+
+    stop)
+        stop
+        ;;
+
+    restart)
+        stop
+        start
+        ;;
+
+    *)
+        echo "ERROR: unknown command: $command" 
+        exit 1
+        ;;
+
+esac
