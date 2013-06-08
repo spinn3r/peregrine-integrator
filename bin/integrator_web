@@ -248,7 +248,7 @@ for conf in sorted( os.listdir( "./conf/" ) ):
 
 #print "Working with configs: %s" % configs
 
-libintegrator.init_scratch( WEB_SCRATCH )
+libintegrator.init_scratch( WEB_SCRATCH, REPO )
 
 while True:
     
