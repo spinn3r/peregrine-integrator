@@ -196,7 +196,7 @@ def init_scratch(dir, repo):
     # change to the sratch dir and hg pull -u
     os.chdir( dir )
 
-    run_cmd( "hg update -C -r %s" % rev )
+    run_cmd( "hg pull -u" )
 
 
 
