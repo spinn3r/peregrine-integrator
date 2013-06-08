@@ -245,6 +245,7 @@ for conf in sorted( os.listdir( "./conf/" ) ):
     NAME=None
     TEST_LOGS=None
     WEBDIR=None
+    SCRATCH=None
 
 #print "Working with configs: %s" % configs
 
