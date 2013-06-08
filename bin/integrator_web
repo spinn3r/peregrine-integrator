@@ -114,6 +114,9 @@ class ReportIndex:
 
         if max_duration == -1:
             max_duration = ""
+        else:
+            # we want to think in minutes - not seconds.
+            max_duration = max_duration / 60
 
         file.write( "<td nowrap>%s</td>\n" % max_duration )
 
