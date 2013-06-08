@@ -190,11 +190,11 @@ def init_scratch(dir, repo):
 
     if not os.path.exists( "%s/.hg" % dir ):
 
-        os.chdir( scratch )
-        run_cmd( "hg clone %s %s" % (repo,scratch) )
+        os.chdir( dir )
+        run_cmd( "hg clone %s %s" % (repo,dir) )
 
     # change to the sratch dir and hg pull -u
-    os.chdir( scratch )
+    os.chdir( dir )
 
     run_cmd( "hg update -C -r %s" % rev )
 
