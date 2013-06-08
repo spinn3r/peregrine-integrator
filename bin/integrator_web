@@ -216,12 +216,14 @@ class Conf:
 
 DAEMON_SLEEP_INTERVAL=60
 
+BASEDIR="/var/lib/integration/peregrine"
+REPO="https://burtonator:redapplekittycat@bitbucket.org/burtonator/peregrine"
+WEB_SCRATCH="/tmp/integration/web"
+
 NAME=None
 TEST_LOGS=None
 SCRATCH=None
 WEBDIR=None
-
-BASEDIR="/var/lib/integration/peregrine"
 
 daemon=False
 
@@ -245,6 +247,8 @@ for conf in sorted( os.listdir( "./conf/" ) ):
     WEBDIR=None
 
 #print "Working with configs: %s" % configs
+
+libintegrator.init_scratch( WEB_SCRATCH )
 
 while True:
     

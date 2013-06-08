@@ -50,6 +50,23 @@ def get_changedir(dir,rev):
 
     return changedir
 
+def run_cmd(cmd, input=None, stdout=None, stderr=None, cwd=None, fail=True):
+    """Run the given command and read its output"""
+
+    print " # %s" % cmd
+
+    pipe = subprocess.Popen(cmd, shell=True, cwd=cwd, stdout=stdout, stderr=stderr)
+
+    (_out,_err) = pipe.communicate( input )
+    result = pipe.poll()
+        
+    if result == 0:
+        return 0
+    elif result >= 0 and fail:
+        raise Exception( "%s exited with %s" % (cmd, result) )
+
+    return result
+
 def read_cmd(cmd, input=None, cwd=None):
     """Run the given command and read its output"""
 
@@ -160,4 +177,28 @@ def get_rev_status(basedir,rev):
                 return -2
                 
     return None
+
+def makedirWhenNotExists( dir ):
+
+    if not os.path.exists( dir ):
+        os.makedirs( dir )
+
+def init_scratch(dir, repo):
+    """Jump to the scratch dir and clone/update."""
+
+    makedirWhenNotExists( dir )
+
+    if not os.path.exists( "%s/.hg" % dir ):
+
+        os.chdir( scratch )
+        run_cmd( "hg clone %s %s" % (repo,scratch) )
+
+    # change to the sratch dir and hg pull -u
+    os.chdir( scratch )
+
+    run_cmd( "hg update -C -r %s" % rev )
+
+
+
     
+

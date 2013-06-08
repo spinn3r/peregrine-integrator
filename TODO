@@ -1,4 +1,7 @@
 
+- The web interface needs its own scratch dir so it can get the LATEST commit
+  information.
+
 - A % of completed slots would be nice so that when a job is tryign to catch up
   on a LOT of work due to a large-retest then I can see the percentage...  I'm
   going to need a system to log this every hour.
