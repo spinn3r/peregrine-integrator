@@ -174,16 +174,16 @@ def get_status_for_configs(configs,rev):
 
     return result
 
-def write_index(configs):
+def write_index(scratch, basedir, configs):
     """Write the full index of the index"""
 
-    print "Using scratch dir: %s" % SCRATCH
+    print "Using scratch dir: %s" % scratch
 
-    index   = ReportIndex(BASEDIR, configs)
+    index   = ReportIndex(basedir, configs)
 
     try:
 
-        changelog = libintegrator.get_change_index_flat(SCRATCH)
+        changelog = libintegrator.get_change_index_flat(scratch)
 
         idx = 0
         for change in changelog:
@@ -252,7 +252,7 @@ libintegrator.init_scratch( WEB_SCRATCH, REPO )
 
 while True:
     
-    write_index(configs)    
+    write_index(WEB_SCRATCH, BASEDIR, configs)    
     
     if not daemon:
         break
