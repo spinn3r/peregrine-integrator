@@ -5,7 +5,7 @@ start() {
     cd /root/peregrine-integrator
     export PYTHONPATH=lib
 
-    ./bin/integrator_web --daemon > /var/log/peregrine-integrator_web.log &
+    ./bin/integrator_web --daemon 2> /dev/stdout > /var/log/peregrine-integrator_web.log &
     
     echo "started"
 
