@@ -19,3 +19,20 @@
 - put the test-basic in its own test suite though I don't htink it's taking much time.
 
 - how are we going to purge old tests... I think I need to use OLD_AGE to do this.
+
+
+- it would be NICE to mark a rev as broken and just skip testing it.
+
+- once ANY of the tests fails it would be nice to just abort testing all the
+  other tests on the same rev.  That should probably be the default and then we
+  can have some mechanism to force a test.
+
+    - Do we want to test on JDK 1.7 and 1.6 too?
+    - What about XFS and ext4?
+
+    - I think the right way to handle this would be to have:
+
+        - 1:1:1:1 (jdk1.6+XFS)
+        - 1:1:1:1 (jdk1.6+ext4)
+        - 1:1:1:1 (jdk1.7+XFS) 
+        - 1:1:1:1 (jdk1.7+ext4) 
