@@ -252,10 +252,10 @@ for conf in sorted( os.listdir( "./conf/" ) ):
 
 #print "Working with configs: %s" % configs
 
-libintegrator.init_scratch( WEB_SCRATCH, REPO )
-
 while True:
     
+    libintegrator.init_scratch( WEB_SCRATCH, REPO )
+
     write_index(WEB_SCRATCH, BASEDIR, configs)    
     
     if not daemon:
