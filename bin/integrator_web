@@ -45,7 +45,9 @@ class ReportIndex:
         file.write( ".duration { text-align: right; }\n" )
         file.write( "</style>\n" )
 
+        file.write( "<meta http-equiv='refresh' content='60'>\n" )
         file.write( "<meta http-equiv='cache-control' content='no-cache'>\n" )
+
         file.write( "<title>Integration report</title>\n" )
         file.write( "</head>\n" )
         file.write( "<body>\n" )

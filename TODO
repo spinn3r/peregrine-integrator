@@ -35,4 +35,19 @@
         - 1:1:1:1 (jdk1.6+XFS)
         - 1:1:1:1 (jdk1.6+ext4)
         - 1:1:1:1 (jdk1.7+XFS) 
-        - 1:1:1:1 (jdk1.7+ext4) 
+        - 1:1:1:1 (jdk1.7+ext4)
+
+- disk space issues...
+    - only generate reports if the tests FAIL.  Otherwise we're going to be
+    - burning a LOT of disk space.
+        
+ - Scheduling algorithm notes:
+
+    - If the most recent version of a build passes, we shouldn't spend time
+      testing OLDER verisons of the build.  That's just silly... The only time
+      this is an issue is when we're trying to find out where a build has
+      broken.  In that situation it DOES make sense to test older revisions but
+      we need to figure out WHEN we are in that use case.
+
+    - Bug... if 1:1:1:1 is all up to date, but 1:1:1:2 has 20 CLs to test, then
+      we don't use any more resources to test those CLs.
