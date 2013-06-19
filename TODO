@@ -51,3 +51,11 @@
 
     - Bug... if 1:1:1:1 is all up to date, but 1:1:1:2 has 20 CLs to test, then
       we don't use any more resources to test those CLs.
+
+
+- if a CL failed before with specific config, we should prioritize that
+  CL+config in the queue as soon as a new CL is submitted.
+
+- We could have a DEPENDS section which is a directory that must pass BEFORE we
+  are allowed to move forward.  This would effectiely serialize everything
+  though.  That being said.. I *DO* have to test JDK 1.7 .. 
