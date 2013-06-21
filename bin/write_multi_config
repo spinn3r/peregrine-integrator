@@ -1,23 +1,22 @@
 #!/bin/sh
 
-FACTORS="1 2"
-CONFIGS="1:1:1 1:1:2 1:1:4 1:2:3 2:1:1 2:1:4"
-
 portOffset=150
 
 # Test with peregrine.test.backend=threads | processes
 
 write_configs() {
 
-    for factor in $FACTORS; do
-        for config in $CONFIGS; do
+    factors="$1"
+    configs="$2"
+    backend="$3"
+
+    for factor in $factors; do
+        for config in $configs; do
 
             name_prefix="T"
-            backend="threads"
 
-            if [ "$factor" != "1" ]; then
+            if [ "$backend" == "processes" ]; then
                 name_prefix="P"
-                backend="processes"
             fi
 
             basename=$factor:$config
@@ -60,4 +59,5 @@ EOF
 
 }
 
-write_configs 
+write_configs "1 2" "1:1:1 1:1:2 1:1:4 1:2:3 2:1:1 2:1:4" "threads"
+write_configs "3" "1:1:1" "processes"
