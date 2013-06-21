@@ -8,7 +8,7 @@ TEST_LOGS="/var/lib/integration/peregrine/test-1_2_1_1"
 
 WEBDIR="/test-1_2_1_1"
 
-TEST_COMMAND="export HOSTNAME=localhost && export ANT_OPTS='-Xmx512M -Dperegrine.test.backend=threads -Dperegrine.test.portOffset=400 -Dmulti.factors=1 -Dmulti.configs=2:1:1' && time ant test"
+TEST_COMMAND="ulimit -n 100000 && export HOSTNAME=localhost && export ANT_OPTS='-Xmx512M -Dperegrine.test.backend=threads -Dperegrine.test.portOffset=400 -Dmulti.factors=1 -Dmulti.configs=2:1:1' && time ant test"
 
 POST_COMMAND="export ANT_OPTS=-Xmx512M && ant test-report"
 
