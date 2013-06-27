@@ -104,12 +104,13 @@ def get_change_index_flat(scratch):
 
     return parse_hg_log_flat(get_hg_log(scratch))
 
-def get_hg_log(scratch):
-    """Get the output of 'hg log'""" 
+def get_git_log(scratch):
+    """Get the output of 'git log'""" 
 
     os.chdir( scratch )
 
-    output=read_cmd( "hg log --template '{rev} {branches} {date} {author} DESC:{desc}\n'" )
+    output=read_cmd( "git log" )
+    #output=read_cmd( "hg log --template '{rev} {branches} {date} {author} DESC:{desc}\n'" )
     #output=read_cmd( "hg log --template '{rev} {branches} {date}\n'" )
     #output=read_cmd( "hg log --template '{rev} {branches} {date} {author}\n'" )
 
@@ -188,12 +189,12 @@ def init_scratch(dir, repo):
 
     makedirWhenNotExists( dir )
 
-    if not os.path.exists( "%s/.hg" % dir ):
+    if not os.path.exists( "%s/.git" % dir ):
 
         os.chdir( dir )
-        run_cmd( "hg clone %s %s" % (repo,dir) )
+        run_cmd( "git clone %s %s" % (repo,dir) )
 
-    # change to the sratch dir and hg pull -u
+    # change to the sratch dir and git pull
     os.chdir( dir )
 
     run_cmd( "git pull" )
