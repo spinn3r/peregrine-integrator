@@ -103,22 +103,19 @@ def parse_git_log_desc(line):
 def get_change_index_flat(scratch):
     """Get the full HG log output."""
 
-    return parse_hg_log_flat(get_hg_log(scratch))
+    return parse_git_log_flat(get_git_log(scratch))
 
-def get_hg_log(scratch):
+def get_git_log(scratch):
     """Get the output of 'git log'""" 
 
     os.chdir( scratch )
 
     output=read_cmd( "git log --format='%H %at %an DESC:%s'" )
-    #output=read_cmd( "hg log --template '{rev} {branches} {date} {author} DESC:{desc}\n'" )
-    #output=read_cmd( "hg log --template '{rev} {branches} {date}\n'" )
-    #output=read_cmd( "hg log --template '{rev} {branches} {date} {author}\n'" )
 
     return output
 
-def parse_hg_log_flat(output):
-    """Parse the HG log by changeset ID"""
+def parse_git_log_flat(output):
+    """Parse the git log by commit hash"""
     
     index=[]
 
