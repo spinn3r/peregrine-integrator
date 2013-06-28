@@ -29,8 +29,8 @@ import libintegrator
 # print html
 
 
-print libintegrator.get_rev_status( "/var/lib/integration/peregrine/test-1_1_2_3", 3658 )
-print libintegrator.get_rev_status( "/var/lib/integration/peregrine/test-1_1_2_3", 3591 )
+#print libintegrator.get_rev_status( "/var/lib/integration/peregrine/test-1_1_2_3", 3658 )
+#print libintegrator.get_rev_status( "/var/lib/integration/peregrine/test-1_1_2_3", 3591 )
 
-print libintegrator.get_hg_log("/root/temp/peregrine-integrator")
+#print libintegrator.get_hg_log("/root/temp/peregrine-integrator")
 print libintegrator.get_change_index_flat("/root/temp/peregrine-integrator")

@@ -94,9 +94,10 @@ def read_cmd(cmd, input=None, cwd=None):
         elif result >= 0:
             raise Exception( "%s exited with %s" % (cmd, result) )
 
-def parse_hg_log_desc(line):
+def parse_git_log_desc(line):
 
     return line[line.find( "DESC:" ) + len("DESC:"):]
+
 
 
 def get_change_index_flat(scratch):
@@ -134,7 +135,7 @@ def parse_hg_log_flat(output):
         changectx['rev']     = split[0]
         changectx['date']    = split[1]
         changectx['author']  = split[2]
-        changectx['desc']    = parse_hg_log_desc(line)
+        changectx['desc']    = parse_git_log_desc(line)
 
         index.append( changectx )
 
