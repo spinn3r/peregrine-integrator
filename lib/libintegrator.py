@@ -129,7 +129,7 @@ def parse_git_log_flat(output):
             continue
 
 
-        changectx['rev']     = split[0]
+        changectx['commit']     = split[0]
         changectx['date']    = split[1]
         changectx['author']  = split[2]
         changectx['desc']    = parse_git_log_desc(line)
