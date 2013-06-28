@@ -104,12 +104,12 @@ def get_change_index_flat(scratch):
 
     return parse_hg_log_flat(get_hg_log(scratch))
 
-def get_git_log(scratch):
+def get_hg_log(scratch):
     """Get the output of 'git log'""" 
 
     os.chdir( scratch )
 
-    output=read_cmd( "git log" )
+    output=read_cmd( "git log --format='%H %at %an DESC:%s'" )
     #output=read_cmd( "hg log --template '{rev} {branches} {date} {author} DESC:{desc}\n'" )
     #output=read_cmd( "hg log --template '{rev} {branches} {date}\n'" )
     #output=read_cmd( "hg log --template '{rev} {branches} {date} {author}\n'" )
@@ -130,15 +130,10 @@ def parse_hg_log_flat(output):
         if len( split ) < 3:
             continue
 
-        branch=split[1]
-
-        if branch == "":
-            branch = "default"
 
         changectx['rev']     = split[0]
-        changectx['branch']  = branch
-        changectx['date']    = split[2]
-        changectx['author']  = split[3]
+        changectx['date']    = split[1]
+        changectx['author']  = split[2]
         changectx['desc']    = parse_hg_log_desc(line)
 
         index.append( changectx )
